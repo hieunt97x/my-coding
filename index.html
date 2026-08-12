@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nguyễn Trung Hiếu | Video Editor & Cameraman</title>
 
-    <!-- 1. TẢI GOOGLE FONTS (Montserrat & Inter) -->
+    <!-- TẢI GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -17,72 +17,38 @@
             --accent-color: #e50914;
             --card-bg: #1e1e1e;
             
-            /* Khai báo biến Font chữ */
             --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
             margin: 0; padding: 0;
-            font-family: var(--font-body); /* Áp dụng font Inter cho toàn bộ phần văn bản */
+            font-family: var(--font-body);
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased; /* Làm mịn nét chữ trên iPhone/Macbook */
+            -webkit-font-smoothing: antialiased;
         }
 
         header { text-align: center; padding: 70px 20px 40px; max-width: 800px; margin: 0 auto; }
         
-        /* Tiêu đề áp dụng font Montserrat góc cạnh & cá tính */
-        h1 { 
-            font-family: var(--font-heading);
-            font-size: 2.8rem; 
-            font-weight: 800;
-            margin: 0 0 10px; 
-            letter-spacing: -0.5px;
-        }
+        h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 800; margin: 0 0 10px; letter-spacing: -0.5px; }
         h1 span { color: var(--accent-color); }
-        
         .bio { font-size: 1.1rem; color: #aaaaaa; margin-bottom: 20px; font-weight: 500; }
         .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
-        .contact-info a { 
-            font-family: var(--font-body);
-            font-weight: 500;
-            color: var(--text-color); 
-            text-decoration: none; 
-            background-color: var(--card-bg); 
-            padding: 10px 22px; 
-            border-radius: 30px; 
-            transition: all 0.3s; 
-        }
+        .contact-info a { font-family: var(--font-body); font-weight: 500; color: var(--text-color); text-decoration: none; background-color: var(--card-bg); padding: 10px 22px; border-radius: 30px; transition: all 0.3s; }
         .contact-info a:hover { background-color: var(--accent-color); transform: translateY(-2px); }
 
-        /* HIỆU ỨNG CUỘN TỚI ĐÂU HIỆN TỚI ĐÓ */
         section {
-            max-width: 1200px;
-            margin: 0 auto 70px;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
+            max-width: 1200px; margin: 0 auto 70px; padding: 0 20px;
+            opacity: 0; transform: translateY(50px) scale(0.95);
             transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+        section.visible { opacity: 1; transform: translateY(0) scale(1); }
 
-        h2 { 
-            font-family: var(--font-heading);
-            font-size: 1.6rem; 
-            font-weight: 800;
-            margin-bottom: 20px; 
-            padding-left: 12px; 
-            border-left: 4px solid var(--accent-color); 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
+        h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; padding-left: 12px; border-left: 4px solid var(--accent-color); text-transform: uppercase; letter-spacing: 1px; }
 
         .slider-wrapper { position: relative; cursor: grab; }
         .slider-wrapper:active { cursor: grabbing; }
@@ -93,8 +59,8 @@
         }
         .slider::-webkit-scrollbar { display: none; }
 
-        /* HIỆU ỨNG HOVER FOCUS & TỐI NỀN PHÍA SAU */
-        .video-card {
+        /* Gộp chung CSS cho cả Thẻ Video và Thẻ GIF */
+        .video-card, .gif-card {
             flex: 0 0 auto;
             scroll-snap-align: center;
             background-color: var(--card-bg);
@@ -102,19 +68,16 @@
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             position: relative;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        opacity 0.4s ease, 
-                        filter 0.4s ease, 
-                        box-shadow 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .slider:hover .video-card {
+        .slider:hover .video-card, .slider:hover .gif-card {
             opacity: 0.35;
             filter: brightness(0.5) grayscale(30%);
             transform: scale(0.96);
         }
 
-        .slider .video-card:hover {
+        .slider .video-card:hover, .slider .gif-card:hover {
             opacity: 1;
             filter: brightness(1.1) grayscale(0%);
             transform: scale(1.06) !important;
@@ -122,10 +85,10 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 25px rgba(229, 9, 20, 0.5);
         }
 
-        .video-card.landscape { width: 85vw; max-width: 720px; aspect-ratio: 16 / 9; }
-        .video-card.portrait { width: 60vw; max-width: 320px; aspect-ratio: 9 / 16; }
+        .video-card.landscape, .gif-card.landscape { width: 85vw; max-width: 720px; aspect-ratio: 16 / 9; }
+        .video-card.portrait, .gif-card.portrait { width: 60vw; max-width: 320px; aspect-ratio: 9 / 16; }
 
-        .video-card img {
+        .video-card img, .gif-card img {
             width: 100%; height: 100%; object-fit: cover;
             pointer-events: none;
         }
@@ -143,43 +106,11 @@
         
         .play-btn svg { width: 30px; height: 30px; fill: white; margin-left: 5px; }
 
-        .video-card:hover .play-btn { background: var(--accent-color); transform: translate(-50%, -50%) scale(1.15); }
+        .video-card:hover .play-btn, .gif-card:hover .play-btn { background: var(--accent-color); transform: translate(-50%, -50%) scale(1.15); }
 
         iframe { width: 100%; height: 100%; border: none; }
         footer { text-align: center; padding: 40px 20px; color: #777; border-top: 1px solid #222; }
-        @media (max-width: 768px) { 
-            h1 { font-size: 2.2rem; }
-            .video-card.landscape { width: 90vw; } 
-            .video-card.portrait { width: 70vw; } 
-        }
-        /* STYLE CHO MỤC ẢNH GIF / ẢNH LIÊN KẾT */
-        .gif-link-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .gif-link-wrapper a {
-            display: block;
-            width: 90vw;
-            max-width: 350px; /* Kích thước chuẩn cho ảnh dọc */
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-        }
-
-        .gif-link-wrapper a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 25px rgba(229, 9, 20, 0.5);
-        }
-
-        .gif-link-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            pointer-events: none;
-        }
+        @media (max-width: 768px) { h1 { font-size: 2.2rem; } .video-card.landscape, .gif-card.landscape { width: 90vw; } .video-card.portrait, .gif-card.portrait { width: 70vw; } }
     </style>
 </head>
 <body>
@@ -251,22 +182,47 @@
             </div>
         </div>
     </section>
-<!-- SECTION 5: LIÊN KẾT ĐẶC BIỆT -->
+
+    <!-- SECTION 5: SLIDER ẢNH GIF ĐẶC BIỆT -->
     <section>
         <h2>Dự Án Đặc Biệt</h2>
-        <div class="gif-link-wrapper">
-            <!-- Thẻ <a> bọc bên ngoài thẻ <img> để tạo link -->
-            <a href="https://www.youtube.com/watch?v=KBFAsHsVu0k" target="_blank" rel="noopener noreferrer">
-                <img src="forgotten_moons.gif" alt="Dự án đặc biệt">
-            </a>
+        <div class="slider-wrapper">
+            <div class="slider">
+                <!-- GIF 1 -->
+                <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
+                    <img src="forgotten_moons.gif" alt="Dự Án Đặc Biệt">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <!-- GIF 2 -->
+                <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
+                    <img src="0ab3d6eac6104c958e1f775c5c244069.gif" alt="Dự Án Đặc Biệt">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <!-- GIF 3 -->
+                <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
+                    <img src="175354_Rawezgif.comvideotogifconverter.gif" alt="Dự Án Đặc Biệt">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <!-- GIF 4 -->
+                <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
+                    <img src="6fbcf93549ebfb8660953e347e3691f4.gif" alt="Dự Án Đặc Biệt">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <!-- GIF 5 -->
+                <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
+                    <img src="c8971ffc6d60b7399b0fbdd4ddede7b9.gif" alt="Dự Án Đặc Biệt">
+                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+            </div>
         </div>
     </section>
+
     <footer>
         <p>&copy; 2026 Nguyễn Trung Hiếu. All rights reserved.</p>
     </footer>
 
     <script>
-        // 1. Tự động gắn Thumbnail
+        // 1. Tự động gắn Thumbnail cho VIDEO
         const videoCards = document.querySelectorAll('.video-card');
         videoCards.forEach(card => {
             const videoId = card.getAttribute('data-id');
@@ -293,7 +249,7 @@
 
         sections.forEach(section => { sectionObserver.observe(section); });
 
-        // 3. Logic kéo vuốt & Click mở Video
+        // 3. Logic kéo vuốt cho TẤT CẢ Sliders
         const sliders = document.querySelectorAll('.slider');
         sliders.forEach(slider => {
             let isDown = false;
@@ -321,6 +277,7 @@
                 slider.scrollLeft = scrollLeft - walk;
             });
 
+            // Logic Click cho thẻ VIDEO (Mở nhúng YouTube)
             slider.querySelectorAll('.video-card').forEach(card => {
                 card.addEventListener('click', function(e) {
                     if (isDragging) return; 
@@ -330,6 +287,15 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen></iframe>
                     `;
+                });
+            });
+
+            // Logic Click cho thẻ ẢNH GIF (Mở sang Link YouTube ở tab mới)
+            slider.querySelectorAll('.gif-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (isDragging) return; // Nếu đang kéo lướt thì không bấm link
+                    const link = this.getAttribute('data-link');
+                    window.open(link, '_blank');
                 });
             });
         });
