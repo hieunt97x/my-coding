@@ -152,6 +152,34 @@
             .video-card.landscape { width: 90vw; } 
             .video-card.portrait { width: 70vw; } 
         }
+        /* STYLE CHO MỤC ẢNH GIF / ẢNH LIÊN KẾT */
+        .gif-link-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .gif-link-wrapper a {
+            display: block;
+            width: 90vw;
+            max-width: 350px; /* Kích thước chuẩn cho ảnh dọc */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+
+        .gif-link-wrapper a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 25px rgba(229, 9, 20, 0.5);
+        }
+
+        .gif-link-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -223,7 +251,16 @@
             </div>
         </div>
     </section>
-
+<!-- SECTION 5: LIÊN KẾT ĐẶC BIỆT -->
+    <section>
+        <h2>Dự Án Đặc Biệt</h2>
+        <div class="gif-link-wrapper">
+            <!-- Thẻ <a> bọc bên ngoài thẻ <img> để tạo link -->
+            <a href="https://www.youtube.com/watch?v=KBFAsHsVu0k" target="_blank" rel="noopener noreferrer">
+                <img src="forgotten_moons.jpg" alt="Dự án đặc biệt">
+            </a>
+        </div>
+    </section>
     <footer>
         <p>&copy; 2026 Nguyễn Trung Hiếu. All rights reserved.</p>
     </footer>
