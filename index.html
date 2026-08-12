@@ -59,7 +59,7 @@
         }
         .slider::-webkit-scrollbar { display: none; }
 
-        /* Gộp chung CSS cho cả Thẻ Video và Thẻ GIF */
+        /* KIỂU DÁNG CƠ BẢN CỦA TẤT CẢ CÁC THẺ (VIDEO & GIF) */
         .video-card, .gif-card {
             flex: 0 0 auto;
             scroll-snap-align: center;
@@ -71,13 +71,16 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .slider:hover .video-card, .slider:hover .gif-card {
+        /* ----- HIỆU ỨNG DÀNH RIÊNG CHO VIDEO ----- */
+        /* Các thẻ video khác sẽ mờ đi khi di chuột vào 1 thẻ video */
+        .slider:hover .video-card {
             opacity: 0.35;
             filter: brightness(0.5) grayscale(30%);
             transform: scale(0.96);
         }
 
-        .slider .video-card:hover, .slider .gif-card:hover {
+        /* Thẻ video được trỏ chuột sẽ sáng lên và to ra */
+        .slider .video-card:hover {
             opacity: 1;
             filter: brightness(1.1) grayscale(0%);
             transform: scale(1.06) !important;
@@ -85,6 +88,15 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 25px rgba(229, 9, 20, 0.5);
         }
 
+        /* ----- HIỆU ỨNG DÀNH RIÊNG CHO GIF ----- */
+        /* Thẻ GIF chỉ phóng to lên khi trỏ chuột, KHÔNG làm các thẻ GIF khác mờ đi */
+        .slider .gif-card:hover {
+            transform: scale(1.06) !important;
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 25px rgba(229, 9, 20, 0.5);
+        }
+
+        /* Kích thước khung */
         .video-card.landscape, .gif-card.landscape { width: 85vw; max-width: 720px; aspect-ratio: 16 / 9; }
         .video-card.portrait, .gif-card.portrait { width: 60vw; max-width: 320px; aspect-ratio: 9 / 16; }
 
@@ -106,7 +118,7 @@
         
         .play-btn svg { width: 30px; height: 30px; fill: white; margin-left: 5px; }
 
-        .video-card:hover .play-btn, .gif-card:hover .play-btn { background: var(--accent-color); transform: translate(-50%, -50%) scale(1.15); }
+        .video-card:hover .play-btn { background: var(--accent-color); transform: translate(-50%, -50%) scale(1.15); }
 
         iframe { width: 100%; height: 100%; border: none; }
         footer { text-align: center; padding: 40px 20px; color: #777; border-top: 1px solid #222; }
@@ -183,35 +195,25 @@
         </div>
     </section>
 
-    <!-- SECTION 5: SLIDER ẢNH GIF ĐẶC BIỆT -->
+    <!-- SECTION 5: SLIDER ẢNH GIF ĐẶC BIỆT (Đã bỏ icon Play và thêm Lazy Loading) -->
     <section>
         <h2>Dự Án Đặc Biệt</h2>
         <div class="slider-wrapper">
             <div class="slider">
-                <!-- GIF 1 -->
                 <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
-                    <img src="forgotten_moons.gif" alt="Dự Án Đặc Biệt">
-                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    <img src="forgotten_moons.jpg" alt="Dự Án Đặc Biệt" loading="lazy">
                 </div>
-                <!-- GIF 2 -->
                 <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
-                    <img src="0ab3d6eac6104c958e1f775c5c244069.gif" alt="Dự Án Đặc Biệt">
-                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    <img src="0ab3d6eac6104c958e1f775c5c244069.gif" alt="Dự Án Đặc Biệt" loading="lazy">
                 </div>
-                <!-- GIF 3 -->
                 <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
-                    <img src="175354_Rawezgif.comvideotogifconverter.gif" alt="Dự Án Đặc Biệt">
-                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    <img src="175354_Rawezgif.comvideotogifconverter.gif" alt="Dự Án Đặc Biệt" loading="lazy">
                 </div>
-                <!-- GIF 4 -->
                 <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
-                    <img src="6fbcf93549ebfb8660953e347e3691f4.gif" alt="Dự Án Đặc Biệt">
-                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    <img src="6fbcf93549ebfb8660953e347e3691f4.gif" alt="Dự Án Đặc Biệt" loading="lazy">
                 </div>
-                <!-- GIF 5 -->
                 <div class="gif-card portrait" data-link="https://www.youtube.com/watch?v=KBFAsHsVu0k">
-                    <img src="c8971ffc6d60b7399b0fbdd4ddede7b9.gif" alt="Dự Án Đặc Biệt">
-                    <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    <img src="c8971ffc6d60b7399b0fbdd4ddede7b9.gif" alt="Dự Án Đặc Biệt" loading="lazy">
                 </div>
             </div>
         </div>
@@ -277,7 +279,7 @@
                 slider.scrollLeft = scrollLeft - walk;
             });
 
-            // Logic Click cho thẻ VIDEO (Mở nhúng YouTube)
+            // Logic Click cho thẻ VIDEO
             slider.querySelectorAll('.video-card').forEach(card => {
                 card.addEventListener('click', function(e) {
                     if (isDragging) return; 
@@ -290,10 +292,10 @@
                 });
             });
 
-            // Logic Click cho thẻ ẢNH GIF (Mở sang Link YouTube ở tab mới)
+            // Logic Click cho thẻ ẢNH GIF
             slider.querySelectorAll('.gif-card').forEach(card => {
                 card.addEventListener('click', function(e) {
-                    if (isDragging) return; // Nếu đang kéo lướt thì không bấm link
+                    if (isDragging) return; 
                     const link = this.getAttribute('data-link');
                     window.open(link, '_blank');
                 });
